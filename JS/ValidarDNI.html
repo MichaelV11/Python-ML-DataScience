@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Validador de DNI</title>
+<script>
+function validarDNI() {
+    var dni = document.getElementById("dni").value.trim();
+    if(dni.length !== 8 || isNaN(dni)) {
+        alert("Por favor, introduce un número de DNI válido (8 dígitos numéricos).");
+        return;
+    }
+
+    var letras = 'TRWAGMYFPDXBNJZSQVHLCKE';
+    var numeroDNI = dni.substring(0, 8);
+    var resto = numeroDNI % 23;
+    var letraCalculada = letras.charAt(resto); 
+
+    var letraDNI = dni.charAt(8).toUpperCase();
+    if(letraCalculada === letraDNI) {
+        alert("El DNI introducido es válido.");
+    } else {
+        alert("El DNI introducido no es válido.");
+    }
+} 
+</script>
+</head>
+<body>
+<h1>Validador de DNI</h1>
+<label for="dni">Introduce tu DNI:</label>
+<input type="text" id="dni" maxlength="9">
+<button onclick="validarDNI()">Validar DNI</button>
+</body>
+</html>
+ º
